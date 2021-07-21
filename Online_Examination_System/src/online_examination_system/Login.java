@@ -193,6 +193,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -201,10 +202,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost/final_project","root","");
-            String query = "SELECT * FROM `login` WHERE uname=? and password=? and utype=?";
+            String query = ("SELECT * FROM `login` WHERE uname=? and password=? and utype=? ");
+            
             
             pst=con.prepareStatement(query);
             
@@ -241,6 +244,10 @@ public class Login extends javax.swing.JFrame {
         catch(Exception ex){
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+        
+        
+        
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
