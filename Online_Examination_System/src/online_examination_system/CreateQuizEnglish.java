@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
  *
  * @author Padmasiri
  */
-public class CreateQuiz extends javax.swing.JFrame {
+public class CreateQuizEnglish extends javax.swing.JFrame {
 
   
-    public CreateQuiz() {
+    public CreateQuizEnglish() {
         initComponents();
         Connect();
         txtd.setText(String.valueOf(getBill()));
@@ -42,10 +42,10 @@ public class CreateQuiz extends javax.swing.JFrame {
              con=DriverManager.getConnection("jdbc:mysql://localhost/final_project","root","");
              
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CreateQuiz.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CreateQuizEnglish.class.getName()).log(Level.SEVERE, null, ex);
                 
             } catch (SQLException ex) {
-            Logger.getLogger(CreateQuiz.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateQuizEnglish.class.getName()).log(Level.SEVERE, null, ex);
         }
             
         }
@@ -64,7 +64,7 @@ public class CreateQuiz extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(CreateQuiz.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateQuizEnglish.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return billno;
@@ -105,8 +105,8 @@ public class CreateQuiz extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 102));
 
-        jLabelsubject.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabelsubject.setText("jLabel2");
+        jLabelsubject.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelsubject.setText("English Quiz");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Answer");
@@ -130,7 +130,7 @@ public class CreateQuiz extends javax.swing.JFrame {
         jLabel9.setText("Option 04");
 
         txtd.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtd.setText("jLabel10");
+        txtd.setText("no");
 
         txtq.setColumns(20);
         txtq.setRows(5);
@@ -269,7 +269,7 @@ public class CreateQuiz extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -286,8 +286,7 @@ public class CreateQuiz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -339,7 +338,7 @@ public class CreateQuiz extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Question Added Faild"); 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CreateQuiz.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateQuizEnglish.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -360,20 +359,21 @@ public class CreateQuiz extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizEnglish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizEnglish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizEnglish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizEnglish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateQuiz().setVisible(true);
+                new CreateQuizEnglish().setVisible(true);
             }
         });
     }
