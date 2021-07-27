@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
  *
  * @author Padmasiri
  */
-public class CreateQuizMathematics extends javax.swing.JFrame {
+public class CreateQuizGeography extends javax.swing.JFrame {
 
   
-    public CreateQuizMathematics() {
+    public CreateQuizGeography() {
         initComponents();
         Connect();
         txtd.setText(String.valueOf(getBill()));
@@ -42,10 +42,10 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
              con=DriverManager.getConnection("jdbc:mysql://localhost/final_project","root","");
              
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CreateQuizMathematics.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CreateQuizGeography.class.getName()).log(Level.SEVERE, null, ex);
                 
             } catch (SQLException ex) {
-            Logger.getLogger(CreateQuizMathematics.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateQuizGeography.class.getName()).log(Level.SEVERE, null, ex);
         }
             
         }
@@ -55,7 +55,7 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
         
         try {
             Statement smt=con.createStatement();
-            ResultSet rs=smt.executeQuery("select max(qid)from mathematics");
+            ResultSet rs=smt.executeQuery("select max(qid)from sinhala");
             rs.next();
             billno=rs.getInt(1)+1; //Increament by 1 auto ID set
             rs.close();
@@ -64,7 +64,7 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(CreateQuizMathematics.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateQuizGeography.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return billno;
@@ -106,7 +106,7 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 102));
 
         jLabelsubject.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabelsubject.setText("Mathematics Quiz");
+        jLabelsubject.setText("Geography Quiz");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Answer");
@@ -211,7 +211,7 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
                             .addComponent(txta))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(205, 205, 205)
+                .addGap(199, 199, 199)
                 .addComponent(jLabelsubject)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -317,7 +317,7 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
             String answer=txta.getText();
             
             
-            pst=con.prepareStatement("INSERT INTO mathematics(qid, question, option1, option2, option3, option4, answer) values(?,?,?,?,?,?,?)");
+            pst=con.prepareStatement("INSERT INTO sinhala(qid, question, option1, option2, option3, option4, answer) values(?,?,?,?,?,?,?)");
             pst.setString(1, qid);
             pst.setString(2, question);
             
@@ -338,7 +338,7 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Question Added Faild"); 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CreateQuizMathematics.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateQuizGeography.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -359,21 +359,23 @@ public class CreateQuizMathematics extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateQuizMathematics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizGeography.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateQuizMathematics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizGeography.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateQuizMathematics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizGeography.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateQuizMathematics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateQuizGeography.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateQuizMathematics().setVisible(true);
+                new CreateQuizGeography().setVisible(true);
             }
         });
     }
