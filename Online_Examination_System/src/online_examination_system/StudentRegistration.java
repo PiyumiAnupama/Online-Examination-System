@@ -286,7 +286,7 @@ public class StudentRegistration extends javax.swing.JFrame {
             String clz=txtclz.getText();
             
             
-            pst=con.prepareStatement("insert into student(name,phn_num,address,classvalue(?,?,?,?)");
+            pst=con.prepareStatement("insert into student(name,phn_num,address,class) values(?,?,?,?)");
             pst.setString(1, name);
             
             pst.setString(2, phn_num);
