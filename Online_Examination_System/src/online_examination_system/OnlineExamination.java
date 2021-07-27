@@ -28,7 +28,7 @@ public class OnlineExamination extends javax.swing.JFrame {
     public OnlineExamination() {
         initComponents();
         Connect();
-        
+        Examination();
         
         
     }
@@ -40,17 +40,14 @@ public class OnlineExamination extends javax.swing.JFrame {
     public int marks=0;
     Timer time;
    
-    public OnlineExamination(String stname){
-        initComponents();
+    public void Examination(){
         
         
-        
-        //first question and student details
+        //first question 
         try{
            
-            
-             Statement st=con.createStatement();
-            ResultSet rs1=st.executeQuery("select * from english where qid='"+questionID+"'");
+            Statement st=con.createStatement();
+            ResultSet rs1=st.executeQuery("SELECT * FROM english WHERE qid='"+questionID+"'");
             
             while (rs1.next()){
             jLabel5.setText(rs1.getString(1));
@@ -193,9 +190,11 @@ public class OnlineExamination extends javax.swing.JFrame {
     public void submit(){
         
         answerCheck();
+        
         try{
+           
             Statement st=con.createStatement();
-            st.executeUpdate("update marksheet set english='"+marks+"' where mid =(SELECT max(mid))");
+            st.executeUpdate("UPDATE marksheet SET english='"+marks+"' WHERE mid =(SELECT max(mid)FROM marksheet)");
             String marks1=String.valueOf(marks);
             JOptionPane.showMessageDialog(null, marks);
             
@@ -265,18 +264,38 @@ public class OnlineExamination extends javax.swing.JFrame {
         buttonGroup1.add(r4);
         r4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         r4.setText("jRadioButton1");
+        r4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r4ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(r3);
         r3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         r3.setText("jRadioButton1");
+        r3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r3ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(r2);
         r2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         r2.setText("jRadioButton1");
+        r2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r2ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(r1);
         r1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         r1.setText("jRadioButton1");
+        r1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -336,20 +355,20 @@ public class OnlineExamination extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(txtmarks, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addGap(76, 76, 76))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtmarks, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -410,8 +429,8 @@ public class OnlineExamination extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -449,11 +468,11 @@ public class OnlineExamination extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(112, 112, 112)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(303, 303, 303)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -508,6 +527,42 @@ public class OnlineExamination extends javax.swing.JFrame {
             submit();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
+        // TODO add your handling code here:
+        if(r1.isSelected()){
+            r2.setSelected(false);
+            r3.setSelected(false);
+            r4.setSelected(false);
+        }
+    }//GEN-LAST:event_r1ActionPerformed
+
+    private void r2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r2ActionPerformed
+        // TODO add your handling code here:
+         if(r2.isSelected()){
+            r1.setSelected(false);
+            r3.setSelected(false);
+            r4.setSelected(false);
+        }
+    }//GEN-LAST:event_r2ActionPerformed
+
+    private void r3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r3ActionPerformed
+        // TODO add your handling code here:
+         if(r3.isSelected()){
+            r2.setSelected(false);
+            r1.setSelected(false);
+            r4.setSelected(false);
+        }
+    }//GEN-LAST:event_r3ActionPerformed
+
+    private void r4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r4ActionPerformed
+        // TODO add your handling code here:
+         if(r4.isSelected()){
+            r2.setSelected(false);
+            r3.setSelected(false);
+            r1.setSelected(false);
+        }
+    }//GEN-LAST:event_r4ActionPerformed
 
     /**
      * @param args the command line arguments
