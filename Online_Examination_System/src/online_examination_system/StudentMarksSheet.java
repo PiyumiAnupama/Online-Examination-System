@@ -5,6 +5,17 @@
  */
 package online_examination_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Padmasiri
@@ -16,6 +27,62 @@ public class StudentMarksSheet extends javax.swing.JFrame {
      */
     public StudentMarksSheet() {
         initComponents();
+        Connect();
+        Load();
+    }
+     Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+             con=DriverManager.getConnection("jdbc:mysql://localhost/final_project","root","");
+             
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+                
+            } catch (SQLException ex) {
+            Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        }
+    public void Load(){
+        
+            try {
+                pst=con.prepareStatement("select * from marksheet");
+                rs=pst.executeQuery();
+                
+                ResultSetMetaData rsd=rs.getMetaData();
+                int c;
+                c=rsd.getColumnCount();
+                DefaultTableModel d=(DefaultTableModel)jTable1.getModel();
+                d.setRowCount(0);
+                
+                while(rs.next()){
+                    Vector v=new Vector();
+                    for(int i=0; i<=c; i++){
+                        v.add(rs.getString("mid"));
+                        v.add(rs.getString("stname"));
+                        
+                        v.add(rs.getString("class"));
+                        v.add(rs.getString("buddhism"));
+                        v.add(rs.getString("geography"));
+                        v.add(rs.getString("english"));
+                        v.add(rs.getString("history"));
+                        v.add(rs.getString("science"));
+                        v.add(rs.getString("ICT"));
+                       
+                        
+                    }
+                    d.addRow(v);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        
     }
 
     /**
@@ -43,7 +110,7 @@ public class StudentMarksSheet extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID ", "Name", "Class", "Buddhism", "Sinhala", "English", "History", "Science", "Mathematics", "Total Mark", "Grade"
+                "Student ID ", "Name", "Class", "Buddhism", "Geography", "English", "History", "Science", "ICT"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -54,6 +121,11 @@ public class StudentMarksSheet extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 51, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,7 +180,15 @@ public class StudentMarksSheet extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Administrator a=new Administrator();
+                    a.setVisible(true);
+                    this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
