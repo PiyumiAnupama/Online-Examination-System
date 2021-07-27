@@ -213,13 +213,12 @@ public class Student extends javax.swing.JFrame {
             String english="0";
             String history="0";
             String science="0";
-            String mathematics="0";
-            String tot="0";
-            String grade="0";
+            String ICT="0";
             
             
             
-            pst=con.prepareStatement("insert into marksheet(stname,class,buddhism,sinhala,english,history,science,mathematics,tot,grade) values(?,?,?,?,?,?,?,?,?,?)");
+            
+            pst=con.prepareStatement("insert into marksheet(stname,class,buddhism,geography,english,history,science,ICT) values(?,?,?,?,?,?,?,?)");
             pst.setString(1, name);
             pst.setString(2, clz);
             pst.setString(3,buddhism);
@@ -227,9 +226,8 @@ public class Student extends javax.swing.JFrame {
             pst.setString(5,english);
             pst.setString(6,history);
             pst.setString(7,science);
-            pst.setString(8,mathematics);
-            pst.setString(9,tot);
-            pst.setString(10,grade);
+            pst.setString(8,ICT);
+            
             
             
             
