@@ -47,7 +47,7 @@ public class OnlineExaminationIT extends javax.swing.JFrame {
         try{
            
             Statement st=con.createStatement();
-            ResultSet rs1=st.executeQuery("SELECT * FROM mathematics WHERE qid='"+questionID+"'");
+            ResultSet rs1=st.executeQuery("SELECT * FROM it WHERE qid='"+questionID+"'");
             
             while (rs1.next()){
             jLabel5.setText(rs1.getString(1));
@@ -147,7 +147,7 @@ public class OnlineExaminationIT extends javax.swing.JFrame {
             Statement st=con.createStatement();
            
             
-            ResultSet rs1=st.executeQuery("SELECT * FROM mathematics Where qid='"+questionID+"'");
+            ResultSet rs1=st.executeQuery("SELECT * FROM it Where qid='"+questionID+"'");
             
              while (rs1.next()){
             jLabel5.setText(rs1.getString(1));

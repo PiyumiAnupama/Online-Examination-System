@@ -188,6 +188,7 @@ public class StudentMarksSheet extends javax.swing.JFrame {
         Administrator a=new Administrator();
                     a.setVisible(true);
                     this.setVisible(false);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

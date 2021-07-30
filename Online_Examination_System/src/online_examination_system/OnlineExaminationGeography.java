@@ -47,7 +47,7 @@ public class OnlineExaminationGeography extends javax.swing.JFrame {
         try{
            
             Statement st=con.createStatement();
-            ResultSet rs1=st.executeQuery("SELECT * FROM sinhala WHERE qid='"+questionID+"'");
+            ResultSet rs1=st.executeQuery("SELECT * FROM geography WHERE qid='"+questionID+"'");
             
             while (rs1.next()){
             jLabel5.setText(rs1.getString(1));
@@ -147,7 +147,7 @@ public class OnlineExaminationGeography extends javax.swing.JFrame {
             Statement st=con.createStatement();
            
             
-            ResultSet rs1=st.executeQuery("SELECT * FROM sinhala Where qid='"+questionID+"'");
+            ResultSet rs1=st.executeQuery("SELECT * FROM geography Where qid='"+questionID+"'");
             
              while (rs1.next()){
             jLabel5.setText(rs1.getString(1));
